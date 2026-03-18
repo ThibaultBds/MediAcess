@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  php: 
+    build: ./backend
+    ports: 
+      - "8082:80"
+    volumes: 
+      - ./backend:/var/www/html
+    depends_on: 
+      - mysql
+    environment: 
+      - DB_HOST=mysql
+      - DB_NAME=mediaccess
+      - DB_USER=root
+      - DB_PASS=root
+      - JWT_SECRET=change_me_in_production
+  mysql:
+    image: mysql:8.0
+    ports: 
+      - "3307:3306"
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mediaccess
+    volumes: 
+      - db_data:/var/lib/mysql
+      - ./backend/sql:/docker-entrypoint-initdb.d
+  phpmyadmin: 
+    image: phpmyadmin:latest
+    ports: 
+      - "8083:80"
+    environment: 
+      PMA_HOST: mysql
+  angular: 
+    build: ./frontend
+    ports: 
+      - "4200:4200"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  db_data:
