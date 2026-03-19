@@ -57,10 +57,10 @@ WHERE r.name = 'Administrateur';
 
 INSERT INTO users (email, password, first_name, last_name, is_active) 
 VALUES
-('admin@mediaccess.local', '$2y$10$abcdefghijklmnopqrstuv', 'Alice', 'Admin', 1),
-('superviseur@mediaccess.local', '$2y$10$abcdefghijklmnopqrstuv', 'Sofia', 'Superviseur', 1),
-('technicien@mediaccess.local', '$2y$10$abcdefghijklmnopqrstuv', 'Thomas', 'Technicien', 1),
-('personnel@mediaccess.local', '$2y$10$abcdefghijklmnopqrstuv', 'Nina', 'Personnel', 1);
+('admin@mediaccess.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Alice', 'Admin', 1),
+('superviseur@mediaccess.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Sofia', 'Superviseur', 1),
+('technicien@mediaccess.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Thomas', 'Technicien', 1),
+('personnel@mediaccess.local', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Nina', 'Personnel', 1);
 
 INSERT INTO user_roles (user_id, role_id)
 SELECT u.id, r.id

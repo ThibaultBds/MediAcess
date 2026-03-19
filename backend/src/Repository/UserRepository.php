@@ -16,7 +16,13 @@ class UserRepository
 
     public function findByEmail(string $email): array|false
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt = $this->pdo->prepare("
+            SELECT u.*, r.name as role
+            FROM users u
+            LEFT JOIN user_roles ur ON ur.user_id = u.id
+            LEFT JOIN roles r ON r.id = ur.role_id
+            WHERE u.email = :email
+        ");
         $stmt->execute([':email' => $email]);
         return $stmt->fetch();
     }
