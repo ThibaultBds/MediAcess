@@ -5,6 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Core\Router;
 use App\Config\Database;
+use App\Controller\AuthController;
 
 header('Content-Type: application/json');
 
@@ -28,6 +29,11 @@ $router->get('/db-test', function () {
         'database' => 'connected',
         'result' => $result
     ]);
+});
+
+$router->post('/auth/login', function () {
+    $controller = new AuthController();
+    $controller->login();
 });
 
 $router->dispatch($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
