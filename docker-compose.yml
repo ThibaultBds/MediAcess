@@ -28,16 +28,16 @@ services:
   phpmyadmin: 
     image: phpmyadmin:latest
     ports: 
-      - "8083:80"
+      - "8084:80"
     environment: 
       PMA_HOST: mysql
-  angular: 
-    build: ./frontend
-    ports: 
-      - "4200:4200"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+  # angular:
+  #   build: ./frontend
+  #   ports:
+  #     - "4200:4200"
+  #   volumes:
+  #     - ./frontend:/app
+  #     - /app/node_modules
 
 volumes:
   db_data:
